@@ -1,0 +1,25 @@
+namespace :spying do
+  desc 'Temp clean task'
+  task :clean do
+    on fetch(:spying_servers) do
+      within release_path do
+        with fetch(:spying_env_variables) do
+          execute :echo, :clean, fetch(:spying_clean_options)
+        end
+      end
+    end
+  end
+end
+
+# Capistrano::DSL.stages.each do |stage|
+#   after stage, 'spying:smth'
+# end
+
+namespace :load do
+  task :defaults do
+    set :spying_roles, :all
+    set :spying_servers, -> { release_roles(fetch(:spying_roles)) }
+    set :spying_env_variables, {}
+    set :spying_clean_options, ''
+  end
+end
