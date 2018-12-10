@@ -38,10 +38,6 @@ namespace :ops do
   end
 end
 
-# Capistrano::DSL.stages.each do |stage|
-#   after stage, 'ops:smth'
-# end
-
 namespace :load do
   task :defaults do
     set :ops_roles, :all
@@ -50,3 +46,7 @@ namespace :load do
     set :ops_clean_options, ''
   end
 end
+
+# Capistrano::DSL.stages.each do |stage|
+#   after stage, 'ops:smth'
+# end

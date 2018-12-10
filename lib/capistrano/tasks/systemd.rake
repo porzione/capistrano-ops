@@ -33,8 +33,8 @@ namespace :systemd do
     end
   end
 
-  # time format https://www.freedesktop.org/software/systemd/man/systemd.time.html
-  # systemd:uj[puma,-2h]
+  # time format: systemd:uj[puma,-2h]
+  # https://www.freedesktop.org/software/systemd/man/systemd.time.html
   desc 'Systemd unit journal'
   task :uj, :unit, :since, :until do |_t, args|
     cmd = '--no-hostname --no-pager _UID=$(id -u)'

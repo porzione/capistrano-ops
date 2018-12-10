@@ -1,6 +1,6 @@
 # capistrano-ops
 
-Capistrano plugin to run some tasks on deploy servers: tail Rails logs, check user systemd services, execute remote shell commands and so on.
+Capistrano plugin to run some tasks on deploy servers: tail Rails logs, check user's systemd services, execute remote shell commands and so on.
 
 ## Installation
 
@@ -25,6 +25,8 @@ Add this line to your Capfile:
 ```ruby
 require 'capistrano/ops'
 ```
+
+And then check output of `cap -T`.
 
 ## Development
 
