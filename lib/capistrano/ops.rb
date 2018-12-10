@@ -1,2 +1,5 @@
-require_relative 'ops/tasks'
-require_relative 'ops/hooks'
+load File.expand_path('tasks/helpers.rake', __dir__)
+load File.expand_path('tasks/config.rake',  __dir__)
+load File.expand_path('tasks/logs.rake',    __dir__)
+load File.expand_path('tasks/sh.rake',      __dir__)
+load File.expand_path('tasks/systemd.rake', __dir__)
