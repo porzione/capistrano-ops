@@ -4,7 +4,7 @@ require 'capistrano/ops/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'capistrano-ops'
-  spec.version       = '1.4.0'
+  spec.version       = Capistrano::Ops::VERSION
   spec.authors       = ['Oleg Kravchenko']
   spec.email         = ['okravc@gmail.com']
 
@@ -12,21 +12,6 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Ops for Capistrano 3.x'
   spec.homepage      = 'https://github.com/porzione/capistrano-ops'
   spec.license       = 'MIT'
-
-  # Prevent pushing this gem to RubyGems.org.
-  # To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section
-  # to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-
-    spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = spec.homepage
-    # spec.metadata['changelog_uri'] = 'TODO: Put your gem CHANGELOG.md URL here'
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
-  end
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
