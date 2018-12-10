@@ -1,0 +1,7 @@
+Layout/AlignHash:
+  EnforcedColonStyle: table
+
+Metrics/BlockLength:
+  Exclude:
+    - 'systemd.rake'
+  Enabled: true
