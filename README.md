@@ -20,7 +20,11 @@ Or, in future, install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add this line to your Capfile:
+
+```ruby
+require 'capistrano/ops'
+```
 
 ## Development
 
