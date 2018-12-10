@@ -3,6 +3,7 @@
 namespace :systemd do
   J_LEN = 200
   SC = :systemctl
+  JC = :journalctl
 
   desc 'Systemd list units'
   task :list do
@@ -43,7 +44,7 @@ namespace :systemd do
     cmd = "#{cmd} -U #{args[:until]}" if args[:until]
     SSHKit.config.use_format :blackhole
     on roles(:app) do
-      execute :journalctl, cmd, interaction_handler: DumbIH.new(host)
+      execute JC, cmd, interaction_handler: DumbIH.new(host)
     end
   end
 
@@ -53,7 +54,7 @@ namespace :systemd do
     cmd = "#{cmd} --user-unit #{args[:unit]}" if args[:unit]
     SSHKit.config.use_format :blackhole
     on roles(:app) do
-      execute :journalctl, cmd, interaction_handler: DumbIH.new(host)
+      execute JC, cmd, interaction_handler: DumbIH.new(host)
     end
   end
 
