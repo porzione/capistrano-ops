@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :logs do
-  NLINES = 500
+  NLINES = 200
 
   desc 'tail specified log or all'
   task :tail, :file do |_, args|
