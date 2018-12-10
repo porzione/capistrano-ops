@@ -3,13 +3,13 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = 'capistrano-spying'
+  spec.name          = 'capistrano-ops'
   spec.version       = '1.4.0'
   spec.authors       = ['Oleg Kravchenko']
   spec.email         = ['okravc@gmail.com']
-  spec.description   = %q{Spying for Capistrano 3.x}
-  spec.summary       = %q{Spying for Capistrano 3.x}
-  spec.homepage      = 'https://github.com/porzione/capistrano-spying'
+  spec.description   = %q{Ops for Capistrano 3.x}
+  spec.summary       = %q{Ops for Capistrano 3.x}
+  spec.homepage      = 'https://github.com/porzione/capistrano-ops'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
