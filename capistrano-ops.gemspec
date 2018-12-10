@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'capistrano-ops'
-  spec.version       = '0.1.0'
+  spec.version       = '0.1.1'
   spec.authors       = ['Oleg Kravchenko']
   spec.email         = ['okravc@gmail.com']
 
@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
       .split("\x0")
       .reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
-  spec.bindir        = 'bin'
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
