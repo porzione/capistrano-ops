@@ -1,32 +1,41 @@
 # frozen_string_literal: true
 
 namespace :deploy do
-  desc 'Run shell command as root'
-  task :rootsh, :cmd do |_t, args|
-    about('command') unless args[:cmd]
+  desc 'Run shell command'
+  task :sh, :cmd, :as_user do |_t, args|
+    about('command?') unless args[:cmd]
 
-    on roles(:app), in: :sequence do |host|
-      host.user = 'root'
-      execute args[:cmd]
+    on roles(:app), in: :sequence do |_host|
+      with fetch(:ops_env_variables) do
+        within release_path do
+          host.user = args[:as_user] if args[:as_user]
+          execute args[:cmd]
+        end
+      end
     end
   end
 
-  desc 'Run shell command'
-  task :sh, :cmd do |_t, args|
-    about('command') unless args[:cmd]
+  desc 'Run shell command with sourced ~/.bash_profile'
+  task :ish, :cmd, :as_user do |_t, args|
+    about('command?') unless args[:cmd]
 
     cmd = "source ~/.bash_profile && #{args[:cmd]}"
     on roles(:app), in: :sequence do |_host|
-      execute cmd
+      with fetch(:ops_env_variables) do
+        within release_path do
+          host.user = args[:as_user] if args[:as_user]
+          execute :'/bin/true', "&& #{cmd}"
+        end
+      end
     end
   end
 
-  # desc 'Temp clean task'
-  # task :clean do
+  # desc 'Echo task'
+  # task :echo do
   #   on fetch(:ops_servers) do
   #     within release_path do
   #       with fetch(:ops_env_variables) do
-  #         execute :echo, :clean, fetch(:ops_clean_options)
+  #         execute :echo, fetch(:ops_echo_options)
   #       end
   #     end
   #   end
