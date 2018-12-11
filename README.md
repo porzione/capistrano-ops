@@ -29,8 +29,10 @@ require 'capistrano/ops'
 set your defaults in config/deploy.rb
 
 ```ruby
+# default is 'production'
 set :ops_log, ['puma.out', 'puma.err']
-set :ops_svc, 'puma-cfproxy.service'
+# default is 'puma.service'
+set :ops_svc, 'puma-some-app.service'
 ```
 
 And then check output of `bundle exec cap -T`.
