@@ -30,7 +30,7 @@ namespace :systemd do
   task :status, :unit do |_t, args|
     unit = args[:unit] || fetch(:ops_svc)
     on roles(:app), in: :sequence do
-      puts capture(SC, "-l --user --no-pager status #{unit}")
+      puts capture(SC, "-l --user --no-pager status #{unit}; true")
     end
   end
 

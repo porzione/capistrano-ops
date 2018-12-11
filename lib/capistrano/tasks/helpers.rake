@@ -25,32 +25,15 @@ class DumbIH
   end
 end
 
-namespace :ops do
-  desc 'Temp clean task'
-  task :clean do
-    on fetch(:ops_servers) do
-      within release_path do
-        with fetch(:ops_env_variables) do
-          execute :echo, :clean, fetch(:ops_clean_options)
-        end
-      end
-    end
-  end
-end
-
 namespace :load do
   task :defaults do
-    set :ops_roles, :all
-    set :ops_servers, -> { release_roles(fetch(:ops_roles)) }
-    set :ops_env_variables, {}
-    set :ops_clean_options, ''
+    # set :ops_roles, :all
+    # set :ops_servers, -> { release_roles(fetch(:ops_roles)) }
+    # set :ops_env_variables, {}
+    # set :ops_clean_options, ''
     set :ops_log, 'production'
     # default systemd service like dj.service when called without
     # service name
     set :ops_svc, 'puma.service'
   end
 end
-
-# Capistrano::DSL.stages.each do |stage|
-#   after stage, 'ops:smth'
-# end

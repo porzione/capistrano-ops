@@ -4,10 +4,12 @@ namespace :logs do
   NLINES = 200
 
   desc 'tail specified log or all'
-  task :tail, :file do |_, args|
+  task :tail, :file, :len do |_, args|
     SSHKit.config.use_format :blackhole
-    file = args[:file] || 'production'
-    cmd = "-f #{shared_path}/log/#{file}.log -n #{NLINES}"
+    logf = args[:file] || fetch(:ops_log)
+    logf = [logf] unless logf.is_a?(Array)
+    logf.map! { |f| "-f #{shared_path}/log/#{f}.log" }
+    cmd = "-n #{args[:len] || NLINES} #{logf.join(' ')}"
     on roles(:app), in: :parallel do |host|
       execute :tail, cmd, interaction_handler: DumbIH.new(host)
     end

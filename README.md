@@ -26,7 +26,14 @@ Add this line to your Capfile:
 require 'capistrano/ops'
 ```
 
-And then check output of `cap -T`.
+set your defaults in config/deploy.rb
+
+```ruby
+set :ops_log, ['puma.out', 'puma.err']
+set :ops_svc, 'puma-cfproxy.service'
+```
+
+And then check output of `bundle exec cap -T`.
 
 ## Development
 
