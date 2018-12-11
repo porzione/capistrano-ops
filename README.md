@@ -29,7 +29,7 @@ require 'capistrano/ops'
 set your defaults in config/deploy.rb
 
 ```ruby
-# default is 'production'
+# default is ['production']
 set :ops_log, ['puma.out', 'puma.err']
 # default is 'puma.service'
 set :ops_svc, 'puma-some-app.service'
