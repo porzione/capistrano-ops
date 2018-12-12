@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 namespace :logs do
-
   # TODO: use other paths than #{shared_path}/log
   desc 'tail specified log or all'
   task :tail, :file, :len do |_, args|
