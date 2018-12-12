@@ -35,5 +35,6 @@ namespace :load do
     # default systemd service like dj.service when called without
     # service name
     set :ops_svc, 'puma.service'
+    set :ops_sj_since, '-30m'
   end
 end

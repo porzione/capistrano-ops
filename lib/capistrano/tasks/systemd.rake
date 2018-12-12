@@ -39,7 +39,7 @@ namespace :systemd do
   task :uj, :unit, :since, :until do |_t, args|
     unit = args[:unit] || fetch(:ops_svc)
     cmd = "--no-hostname --no-pager _UID=$(id -u) --user-unit #{unit}"
-    since = args[:since] || '-1h'
+    since = args[:since] || fetch(:ops_sj_since)
     cmd = "#{cmd} -S #{since}"
     cmd = "#{cmd} -U #{args[:until]}" if args[:until]
     SSHKit.config.use_format :blackhole
