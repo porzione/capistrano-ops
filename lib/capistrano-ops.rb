@@ -2,7 +2,7 @@
 
 module Capistrano
   module Ops
-    # VERSION = '0.0.0'
+    VERSION = '0.1.28'.freeze
     NLINES = 50
   end
 end

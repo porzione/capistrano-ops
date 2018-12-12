@@ -33,13 +33,11 @@ set your defaults in config/deploy.rb
 set :ops_log, ['puma.out', 'puma.err']
 # default is 'puma.service'
 set :ops_svc, 'puma-some-app.service'
+# add env vars
+set :ops_env_variables, { somevar: 'someval' }
 ```
 
-And then check output of `bundle exec cap -T`.
-
-## Development
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `capistrano-ops.gemspec`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Then check output of `bundle exec cap -T`, new command namespaces are `shell:*`, `systemd:*` and `transfer:*`.
 
 ## Contributing
 

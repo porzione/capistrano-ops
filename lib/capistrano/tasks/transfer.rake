@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-namespace :deploy do
+namespace :transfer do
   desc 'Upload file'
   task :upload, :src, :dst, :user do |_, args|
     abort 'provide src and dst' unless args[:src] && args[:dst]
@@ -21,6 +21,7 @@ namespace :deploy do
     end
   end
 
+  desc 'ssh-copy-id from file'
   task :ssh_copy_id, :src do |_, args|
     src = File.expand_path args[:src]
     abort 'provide existing src' unless File.exist?(src)
@@ -28,9 +29,7 @@ namespace :deploy do
     on roles(:app) do |host|
       user = args[:user] || host.user
       cmd = "ssh-copy-id -i #{src} -p #{host.port} #{user}@#{host.hostname}"
-      run_locally do
-        execute cmd
-      end
+      run_locally { execute cmd }
     end
   end
 end

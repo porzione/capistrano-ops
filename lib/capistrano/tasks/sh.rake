@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-namespace :deploy do
+namespace :shell do
   desc 'Run shell command'
   task :sh, :cmd, :user do |_t, args|
     about('command?') unless args[:cmd]
@@ -30,7 +30,6 @@ namespace :deploy do
     end
   end
 
-  # desc 'Echo task'
   # task :echo do
   #   on fetch(:ops_servers) do
   #     within release_path do

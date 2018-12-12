@@ -1,9 +1,10 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'capistrano-ops'
 
 Gem::Specification.new do |spec|
   spec.name          = 'capistrano-ops'
-  spec.version       = '0.1.26'
+  spec.version       = Capistrano::Ops::VERSION
   spec.authors       = ['Oleg Kravchenko']
   spec.email         = ['okravc@gmail.com']
 
