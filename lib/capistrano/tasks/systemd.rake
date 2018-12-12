@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 namespace :systemd do
-  J_LEN = 200
   SC = :systemctl
   JC = :journalctl
 
@@ -52,7 +51,7 @@ namespace :systemd do
   desc 'Systemd journal follow with optional user unit'
   task :ujf, :unit do |_t, args|
     unit = args[:unit] || fetch(:ops_svc)
-    cmd = "--no-hostname --no-pager -f -n#{J_LEN} " \
+    cmd = "--no-hostname --no-pager -f -n#{Capistrano::Ops::NLINES} " \
           "--user-unit #{unit} _UID=$(id -u)"
     SSHKit.config.use_format :blackhole
     on roles(:app) do

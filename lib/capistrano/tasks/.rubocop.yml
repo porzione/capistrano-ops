@@ -4,4 +4,5 @@ Layout/AlignHash:
 Metrics/BlockLength:
   Exclude:
     - 'systemd.rake'
+    - 'transfer.rake'
   Enabled: true

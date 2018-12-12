@@ -1,0 +1,4 @@
+Naming/FileName:
+  Exclude:
+    - 'lib/capistrano-ops.rb'
+  Enabled: true

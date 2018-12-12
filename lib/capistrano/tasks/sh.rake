@@ -2,13 +2,13 @@
 
 namespace :deploy do
   desc 'Run shell command'
-  task :sh, :cmd, :as_user do |_t, args|
+  task :sh, :cmd, :user do |_t, args|
     about('command?') unless args[:cmd]
 
     on roles(:app), in: :sequence do |_host|
       with fetch(:ops_env_variables) do
         within release_path do
-          host.user = args[:as_user] if args[:as_user]
+          host.user = args[:user] if args[:user]
           execute args[:cmd]
         end
       end
@@ -16,14 +16,14 @@ namespace :deploy do
   end
 
   desc 'Run shell command with sourced ~/.bash_profile'
-  task :ish, :cmd, :as_user do |_t, args|
+  task :ish, :cmd, :user do |_t, args|
     about('command?') unless args[:cmd]
 
     cmd = "source ~/.bash_profile && #{args[:cmd]}"
     on roles(:app), in: :sequence do |_host|
       with fetch(:ops_env_variables) do
         within release_path do
-          host.user = args[:as_user] if args[:as_user]
+          host.user = args[:user] if args[:user]
           execute :'/bin/true', "&& #{cmd}"
         end
       end
