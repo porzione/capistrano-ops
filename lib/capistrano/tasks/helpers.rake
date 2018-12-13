@@ -25,6 +25,7 @@ class DumbIH
   end
 end
 
+
 namespace :load do
   task :defaults do
     # set :ops_roles, :all
@@ -36,5 +37,6 @@ namespace :load do
     # service name
     set :ops_svc, 'puma.service'
     set :ops_sj_since, '-30m'
+    set :ops_nlines, 50
   end
 end
