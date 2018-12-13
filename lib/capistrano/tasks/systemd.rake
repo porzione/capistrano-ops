@@ -51,8 +51,7 @@ namespace :systemd do
   desc 'Systemd journal follow with optional user unit'
   task :ujf, :unit do |_t, args|
     unit = args[:unit] || fetch(:ops_svc)
-    n = fetch :ops_nlines
-    cmd = "--no-hostname --no-pager -f -n#{n} " \
+    cmd = "--no-hostname --no-pager -f -n#{fetch :ops_nlines} " \
           "--user-unit #{unit} _UID=$(id -u)"
     SSHKit.config.use_format :blackhole
     on roles(:app) do
