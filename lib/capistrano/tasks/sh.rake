@@ -5,7 +5,7 @@ namespace :shell do
   task :sh, :cmd, :user do |_t, args|
     about('command?') unless args[:cmd]
 
-    on roles(:app), in: :sequence do |_host|
+    on fetch(:ops_servers), in: :sequence do |_host|
       with fetch(:ops_env_variables) do
         within release_path do
           host.user = args[:user] if args[:user]
@@ -20,7 +20,7 @@ namespace :shell do
     about('command?') unless args[:cmd]
 
     cmd = "source ~/.bash_profile && #{args[:cmd]}"
-    on roles(:app), in: :sequence do |_host|
+    on fetch(:ops_servers), in: :sequence do |_host|
       with fetch(:ops_env_variables) do
         within release_path do
           host.user = args[:user] if args[:user]

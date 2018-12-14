@@ -10,7 +10,7 @@ namespace :logs do
     logf = [logf] unless logf.is_a?(Array)
     logf.map! { |f| "-f #{shared_path}/log/#{f}.log" }
     cmd = "-n #{n} #{logf.join(' ')}"
-    on roles(:app), in: :parallel do |host|
+    on fetch(:ops_servers), in: :parallel do |host|
       execute :tail, cmd, interaction_handler: DumbIH.new(host)
     end
   end
