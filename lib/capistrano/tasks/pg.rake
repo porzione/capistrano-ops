@@ -2,11 +2,12 @@
 
 require 'tempfile'
 
-namespace :pg do
+namespace :r_pg do
   include Database
   DEL = %q(grep -v -E '^((CREATE|DROP)\ EXTENSION|COMMENT|SCHEMA\ ON)').freeze
 
   # cap stage pg:dump[~/tmp/db.sql.xz]
+  # TODO: select compress tool from file ext gz|xz|bz2
   desc 'Dump first'
   task :dump, :file do |_, args|
     abort 'no file provided' unless args[:file]
