@@ -25,6 +25,20 @@ class DumbIH
   end
 end
 
+# database tools
+module Database
+  def yml2url(filename)
+    db = Psych.load_file(filename)['production']
+    format('%s://%s:%s/%s?user=%s&password=%s',
+           db['adapter'],
+           db['host'],
+           db['port'] || 5432,
+           db['database'],
+           db['username'] || db['user'],
+           db['password'])
+  end
+end
+
 namespace :load do
   task :defaults do
     set :ops_roles, :all

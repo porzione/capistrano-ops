@@ -1,8 +1,14 @@
 Layout/AlignHash:
   EnforcedColonStyle: table
 
+Style/FormatStringToken:
+  Exclude:
+    - 'helpers.rake'
+  Enabled: true
+
 Metrics/BlockLength:
   Exclude:
+    - 'pg.rake'
     - 'systemd.rake'
     - 'transfer.rake'
   Enabled: true

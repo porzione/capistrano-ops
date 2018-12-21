@@ -2,6 +2,6 @@
 
 module Capistrano
   module Ops
-    VERSION = '0.1.35'.freeze
+    VERSION = '0.1.41'.freeze
   end
 end
