@@ -4,7 +4,7 @@ require 'tempfile'
 
 namespace :r_pg do
   include Database
-  DEL = %q(grep -v -E '^((CREATE|DROP)\ EXTENSION|COMMENT|SCHEMA\ ON)').freeze
+  DEL = %q(grep -v -E '^((CREATE|DROP)\ EXTENSION|COMMENT|SCHEMA\ ON)')
 
   # cap stage pg:dump[~/tmp/db.sql.xz]
   # TODO: select compress tool from file ext gz|xz|bz2
