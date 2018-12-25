@@ -19,6 +19,10 @@ namespace :config do
         servers << server
       when 'full'
         puts "#{host.hostname} #{host.roles.to_a.sort.join ','}"
+      when 'ssh'
+        ssh = "#{host.user}@#{host.hostname}"
+        ssh = "#{ssh}:#{host.port}" if host.port
+        puts ssh
       else
         puts host.hostname
       end

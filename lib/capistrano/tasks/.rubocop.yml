@@ -11,6 +11,7 @@ Style/FormatStringToken:
 
 Metrics/BlockLength:
   Exclude:
+    - 'config.rake'
     - 'pg.rake'
     - 'systemd.rake'
     - 'transfer.rake'
