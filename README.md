@@ -14,9 +14,13 @@ And then execute:
 
     $ bundle
 
+<!---
+TODO: rubygems
 Or, in future, install it yourself as:
 
     $ gem install capistrano-ops
+
+-->
 
 ## Usage
 
