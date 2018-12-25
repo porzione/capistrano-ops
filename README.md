@@ -37,7 +37,7 @@ set :ops_svc, 'puma-some-app.service'
 set :ops_env_variables, { somevar: 'someval' }
 ```
 
-Then check output of `bundle exec cap -T`, new command namespaces are `shell:*`, `systemd:*` and `transfer:*`.
+Then check output of `bundle exec cap -T`, new command namespaces are `shell:*`, `systemd:*`, `transfer:*`, `config:*`, `r_mailer:*`, `r_pg:*`, `logs:*`.
 
 ## Contributing
 
