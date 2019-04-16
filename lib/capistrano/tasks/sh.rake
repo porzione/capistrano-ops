@@ -15,6 +15,20 @@ namespace :shell do
     end
   end
 
+  desc 'Run shell command in parallel'
+  task :psh, :cmd, :user do |_t, args|
+    about('command?') unless args[:cmd]
+
+    on fetch(:ops_servers), in: :parallel do |_host|
+      with fetch(:ops_env_variables) do
+        within release_path do
+          host.user = args[:user] if args[:user]
+          execute args[:cmd]
+        end
+      end
+    end
+  end
+
   desc 'Run shell command with sourced ~/.bash_profile'
   task :ish, :cmd, :user do |_t, args|
     about('command?') unless args[:cmd]
