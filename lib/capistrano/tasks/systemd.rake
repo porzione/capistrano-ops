@@ -161,7 +161,7 @@ namespace :systemd do
   task :kill, :unit do |_t, args|
     unit = args[:unit] || fetch(:ops_svc)
     on fetch(:ops_servers) do
-      execute SC, "--user kill #{unit}"
+      execute SC, "--user kill -s SIGKILL #{unit}"
     end
   end
 end
